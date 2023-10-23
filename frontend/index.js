@@ -70,6 +70,36 @@ function moduleProject2() {
 
   document.addEventListener('keydown', evt => {
     // 👉 TASK 3 - Use the arrow keys to highlight a new square 👈
+    let isUp = evt.key === keys.up
+    let isDown = evt.key === keys.down
+    let isRight = evt.key === keys.right
+    let isLeft = evt.key === keys.left
+
+    let targeted = document.querySelector('.targeted')
+    let idx = Array.from(targeted.parentElement.children).indexOf(targeted)
+
+    if (isUp) {
+      console.log('You clicked up')
+      if (targeted.parentElement.previousElementSibling) {
+        targeted.classList.remove('targeted')
+        targeted.parentElement.previousElementSibling.children[idx].classList.add('targeted')
+      }
+    } else if (isDown) {
+      if (targeted.parentElement.nextElementSibling) {
+        targeted.classList.remove('targeted')
+        targeted.parentElement.nextElementSibling.children[idx].classList.add('targeted')
+      }
+    } else if (isRight) {
+      if (targeted.nextElementSibling) {
+        targeted.classList.remove('targeted')
+        targeted.nextElementSibling.classList.add('targeted')
+      }
+    } else if (isLeft) {
+      if (targeted.previousElementSibling) {
+        targeted.classList.remove('targeted')
+        targeted.previousElementSibling.classList.add('targeted')
+      }
+    }
 
     // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
 
